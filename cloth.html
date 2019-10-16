@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>布</title>
+<script src="js/three.js"></script>
+<script src="js/TrackballControls.js"></script>
+<script src="js/lab-v1.js"></script>
+<script src="js/Cloth.js"></script>
+<script src="js/Cloth-drawer.js"></script>
+<script src="js/Cloth-collision.js"></script>
+
+<script>
+	function startLab() {		
+		peekKey();
+		
+		lab = new Lab("canvas-frame");
+		lab.setup({shadow:true, useTrackball:true, floor:{width:60, height:60}});
+		lab.camera.position.set(30, 20, 35);
+		
+		cloth = new Cloth(10);
+    	lab.scene.add(cloth.makeDrawer());
+
+		ball_radius = 3;
+	 	ball = lab.makeBall({radius:ball_radius, segment:10});
+	 	ball.castShadow = true;
+		ball.position.set(6, 6, 3);
+    	lab.scene.add(ball);
+
+		startDate = new Date();		//	開始時間
+		current_s = 0;				//	最後に計算を終えた時間
+		loop();
+	}
+	
+	function loop() {
+		let total_s = (new Date().getTime() - startDate.getTime()) / 1000;	//	経過時間　単位 s
+		const step_s = 0.01;								// 1回のステップで進める時間　単位 s
+		while (total_s >= current_s) {
+			cloth.update(step_s);
+			cloth.update_sphere_collision(ball.position, ball_radius);
+			current_s += step_s;
+		}
+		cloth.updateDrawer(lab);
+
+		lab.update();				
+		lab.show();
+		window.requestAnimationFrame(loop);
+	}
+	function peekKey() {
+		window.addEventListener("keydown", function(e) {
+			var k = String.fromCharCode( e.keyCode).toUpperCase();
+			if (k == "A") {
+				ball.position.z += 0.25;
+			}
+			if (k == "S") {
+				ball.position.z -= 0.25;
+			}
+		})
+	}
+</script>
+</head>
+<body onload="startLab()">
+<div id="canvas-frame" style="width: 600px; height: 600px;"></div>
+</body>
+</html>
