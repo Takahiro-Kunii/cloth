@@ -1,6 +1,22 @@
 # cloth
 格子状に並べた質点同士を仮想のバネで拘束することで布シミュレーションを行う。
 
+# 準備
+リポジトリをクローンしcloth.htmlをWebブラウザに読み込ませることで動作確認できるが、その前準備として以下のリポジトリ
+three.js
+
+[https://github.com/mrdoob/three.js.git](https://github.com/mrdoob/three.js.git)
+
+
+の中から
+```
+build/three.js
+examples/js/controls/TrackballControls.js
+```
+を、こちらのjsディレクトリにコピーする必要がある。
+
+# 説明 
+
 ### 質点
 位置と質量を持ち、格子状に配置され布を表現する。
 
