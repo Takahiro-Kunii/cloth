@@ -6,7 +6,7 @@
 # 準備
 リポジトリをクローンしcloth.htmlをWebブラウザに読み込ませることで動作確認できるが、その前準備として以下のリポジトリ
 three.js
-
+![](doc/demo.png)
 [https://github.com/mrdoob/three.js.git](https://github.com/mrdoob/three.js.git)
 
 

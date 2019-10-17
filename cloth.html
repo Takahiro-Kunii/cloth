@@ -17,7 +17,7 @@
 		lab = new Lab("canvas-frame");
 		lab.setup({shadow:true, useTrackball:true, floor:{width:60, height:60}});
 		lab.camera.position.set(30, 20, 35);
-		
+
 		cloth = new Cloth(10);
     	lab.scene.add(cloth.makeDrawer());
 
@@ -26,6 +26,7 @@
 	 	ball.castShadow = true;
 		ball.position.set(6, 6, 3);
     	lab.scene.add(ball);
+		lab.trackball.target.copy(ball.position);
 
 		startDate = new Date();		//	開始時間
 		current_s = 0;				//	最後に計算を終えた時間
@@ -58,8 +59,22 @@
 		})
 	}
 </script>
+<style type="text/css">
+.button {
+	display:inline; padding: 20px; width: 200px;
+	text-align: center; background-color: #08B;
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+}
+</style>
 </head>
 <body onload="startLab()">
-<div id="canvas-frame" style="width: 600px; height: 600px;"></div>
+	<div id="canvas-frame" style="width: 600px; height: 600px; border:solid #CCC"></div>
+	<div style="padding: 20px 0px;">
+		<div onclick="ball.position.z += 0.25;" class="button">前進（A）</div>
+		<div onclick="ball.position.z -= 0.25;" class="button" style="background-color: #B80;">後退（S）</div>
+	</div>
 </body>
 </html>
