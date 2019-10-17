@@ -1,12 +1,13 @@
 # cloth
 格子状に並べた質点同士を仮想のバネで拘束することで布シミュレーションを行う。
 
+![](doc/demo.png)
 [デモ](http://tetera.jp/physics/cloth.html)
 
 # 準備
 リポジトリをクローンしcloth.htmlをWebブラウザに読み込ませることで動作確認できるが、その前準備として以下のリポジトリ
 three.js
-![](doc/demo.png)
+
 [https://github.com/mrdoob/three.js.git](https://github.com/mrdoob/three.js.git)
 
 
